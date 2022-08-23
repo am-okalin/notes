@@ -3,6 +3,10 @@
 - server获取clien中的cookie的特定字段(session_id等)进行验证。
 - 用户增多会导致开销增大
 
+## aes & rsa
+
+## key + params + timestream
+
 ## jwt
 ### 流程
 - 用户使用用户名密码来请求服务器

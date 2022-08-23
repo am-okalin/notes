@@ -157,6 +157,12 @@ docker run -it --volumes-from data_container ubuntu /bin/bash
 - `docker run --name nginx -p 127.0.0.1:8080:80/tpc -d nginx` 运行nginx容器
 - `docker run -id --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql`运行mysql容器
 
+### 公共option
+- `--interactive -i` Keep STDIN open even if not attached
+- `--tty -t` Allocate a pseudo-TTY
+- `--detach -d` Run container in background and print container ID
+- `--privileged` Give extended privileges to this container(给容器中的root扩展权限)
+
 
 ## Dockerfile
 ### 概念
@@ -286,3 +292,24 @@ networks:
 | rm         | 删除服务中的各个容器       |
 | logs       | 观察各个容器的日志         |
 | ps         | 列出服务相关容器           |
+
+## 用docker构建测试容器
+```shell
+docker run  -itd -p 50022:22 --privileged --name myCentos centos /usr/sbin/init
+docker exec -it myCentos /bin/bash
+#todo容器中执行命令...
+docker commit -m "exec sshd success" myCentos my_centos
+docker stop myCentos
+docker rm myCentos
+docker run -itd -p 50022:22 --privileged --name myCentos1 my_centos /usr/sbin/init
+docker exec -it myCentos1 /bin/bash
+```
+
+```shell
+dnf -y --disablerepo '*' --enablerepo=extras swap centos-linux-repos centos-stream-repos
+dnf -y distro-sync
+dnf -y install net-tools openssh-server openssh-clients passwd  gcc make vim git wget
+systemctl status sshd
+systemctl start sshd
+passwd root
+```
