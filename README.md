@@ -3,7 +3,6 @@
 - [linux基础](linux.md)
 - [linux发行版](linux发行版.md)
 - [shell & 服务管理](shell.md)
-- [network-cmd](network-cmd.md)
 - [network基础](network.md)
 - [ssh](ssh.md)
 
@@ -23,13 +22,9 @@
 - [authentication](authentication.md)
 
 ## 编程语言
-- [go](go.md)
-- [go_pkg](go_pkg.md)
-- [c](c)
 - [php](php.md)
-- [other](other.md)
+- [other](program.md)
 
 ## 计算机基础
 - [uml](uml.md)
 - [structure](structure.md)
-- [designPttern](designPttern.md)
