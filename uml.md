@@ -42,3 +42,75 @@
 - 信息的封装性：客户端只可实例化`整体类`，`部分类`在客户端中不可见
 - 代码：在内部实例化`部分`对象并赋值给属性
 - 组合和聚合的使用要视`问题域`而定，例如在关心汽车的领域里，轮胎是一定要组合在汽车类中的，因为它离开了汽车就没有意义了。但是在卖轮胎的店铺业务里，就算轮胎离开了汽车，它也是有意义的，这就可以用聚合了。
+
+
+
+## ER图
+```
+@startuml
+hide circle
+skinparam linetype ortho
+
+entity "Entity01" as e01 {
+  *e1_id : number <<generated>>
+  --
+  *name : text
+  description : text
+}
+
+entity "Entity02" as e02 {
+  *e2_id : number <<generated>>
+  --
+  *e1_id : number <<FK>>
+  other_details : text
+}
+
+entity "Entity03" as e03 {
+  *e3_id : number <<generated>>
+  --
+  e1_id : number <<FK>>
+  other_details : text
+}
+
+e01 ||..o{ e02
+e01 |o..o{ e03
+@enduml
+```
+
+### 关键字
+- `'autonumber 10 1 "<b>[000]"` 自动序号
+- `hide circle` 隐藏标题中多余的图标
+- `hide footbox` 移除脚注
+- `skinparam linetype ortho` 使用直角线条
+- `left to right direction` 从左至右的树型结构
+- `*` 候选码
+- `**` 加粗
+- `--` 分隔符
+- `<FK>` 外键描述
+
+
+### 关联关系
+- (O)ption 可选参与
+- (M)andatory 强制参与
+- `|o--` O 0..1
+- `||--` M 1
+- `}|--` M 1..n
+- `}o--` O 0..n
+
+#### 例子: 共有10种可能
+- `人 |o--|{ 车`
+- `人 ||--|| 手`
+- `人 |o--|| 身份证`
+
+
+
+### 属性
+identifying_attribute
+mandatory_attribute
+optional_attribut
+
+
+改动内容文本输出
+
+
+
