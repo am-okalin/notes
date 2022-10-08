@@ -71,7 +71,7 @@ IdentityFile ~/.ssh/github_id_rsa
 - `git config [scope] [action] [other]`
 - scope 作用域。
     + `--system` 对系统所有登录用户有效`/etc/gitconfig`
-    + `--golbal` 对当前用户所有仓库有效`~/.gitconfig`
+    + `--global` 对当前用户所有仓库有效`~/.gitconfig`
     + `--local`  对本地仓库有效`./.git/config` (默认)
 - action 对`git config`的操作
     + `--add key value` 添加一个`git config` (默认)
